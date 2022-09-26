@@ -2,9 +2,9 @@
 
 #ifdef USES_P078
 
-// #######################################################################################################
+// ##############################################################################################################
 // ############## Plugin 078: SDM120/SDM120CT/220/230/630/72D/DDM18SD/72D V2 Eastron Energy Meter ###############
-// #######################################################################################################
+// ##############################################################################################################
 
 /*
    Plugin written by: Sergio Faustino sjfaustino__AT__gmail.com
@@ -189,7 +189,7 @@ boolean Plugin_078(uint8_t function, struct EventStruct *event, String& string)
     case PLUGIN_WEBFORM_LOAD:
     {
       {
-        const __FlashStringHelper *options_model[5] =
+        const __FlashStringHelper *options_model[6] =
         { F("SDM220 & SDM120CT & SDM120"), F("SDM230"), F("SDM72D"), F("DDM18SD"), F("SDM630"), F("SDM72D V2") };
         addFormSelector(F("Model Type"), P078_MODEL_LABEL, 6, options_model, nullptr, P078_MODEL);
         addFormNote(F("Submit after changing the modell to update Output Configuration."));
@@ -524,11 +524,11 @@ unsigned int p078_getRegister(uint8_t query, uint8_t model) {
       case 22: return SDM_TOTAL_SYSTEM_APPARENT_POWER;
       case 23: return SDM_TOTAL_SYSTEM_REACTIVE_POWER;
       case 24: return SDM_TOTAL_SYSTEM_POWER_FACTOR;
-      case 25: return SDM_FREQUENCY;x
+      case 25: return SDM_FREQUENCY;
       case 26: return SDM_IMPORT_ACTIVE_ENERGY;
       case 27: return SDM_EXPORT_ACTIVE_ENERGY;
       case 28: return SDM_LINE_1_TO_LINE_2_VOLTS;
-      case 29: return SDM_LINE_2_TO_LINE_3_VOLTS;x
+      case 29: return SDM_LINE_2_TO_LINE_3_VOLTS;
       case 30: return SDM_LINE_3_TO_LINE_1_VOLTS;
       case 31: return SDM_AVERAGE_LINE_TO_LINE_VOLTS;
       case 32: return SDM_NEUTRAL_CURRENT;
@@ -729,7 +729,7 @@ const __FlashStringHelper* p078_getQueryString(uint8_t query, uint8_t model) {
       case 22: return F("Total System Active Apparent Power (VA)");
       case 23: return F("Total System Reactive Apparent Power (VAr)");
       case 24: return F("Total System Power Factor (cos-phi)");
-      case 25: return F("Frequency of Supply Voltages (Hz)");x
+      case 25: return F("Frequency of Supply Voltages (Hz)");
       case 26: return F("Import Active Energy since last reset (kWh/MWh)");
       case 27: return F("Export Active Energy since last reset (kWh/MWh)");
       case 28: return F("Line 1 to Line 2 Volts (V)");
@@ -951,6 +951,7 @@ const __FlashStringHelper* p078_getQueryValueString(uint8_t query, uint8_t model
       case 39: 
       case 40: return F("V");
     }
+  }
   return F("");
 }
 
